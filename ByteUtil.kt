@@ -5,9 +5,9 @@ class ByteUtil {
     companion object {
         fun toHexString(bytes: ByteArray): String {
             val stringBuffer = StringBuffer()
-            bytes.forEachIndexed() { index,value->
+            bytes.forEachIndexed() { index, value ->
                 stringBuffer.append(String.format("%02x ", value))
-                if(index%16 == 15) stringBuffer.append("\n")
+                if (index + 1 % 16 == 0) stringBuffer.append("\n")
             }
             return stringBuffer.toString()
         }

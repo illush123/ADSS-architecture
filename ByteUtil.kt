@@ -3,11 +3,13 @@ import java.nio.ByteBuffer
 class ByteUtil {
 
     companion object {
+
         fun toHexString(bytes: ByteArray): String {
             val stringBuffer = StringBuffer()
             bytes.forEachIndexed() { index, value ->
                 stringBuffer.append(String.format("%02x ", value))
-                if (index + 1 % 16 == 0) stringBuffer.append("\n")
+                if ((index + 1) % 16 == 0) stringBuffer.append("\n")
+
             }
             return stringBuffer.toString()
         }
@@ -23,5 +25,9 @@ class ByteUtil {
             }
             return bytebuff.array()
         }
+
+        fun bytesToInt(bytes: ByteArray): Int = ByteBuffer.wrap(bytes).int
+
+        fun intToBytes(int: Int): ByteArray = ByteBuffer.allocate(4).putInt(int).array()
     }
 }
